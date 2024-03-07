@@ -1,4 +1,4 @@
-import { Box, Icon, IconButton, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Icon, IconButton, Theme, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { useDrawerContext } from '../contexts';
 import { ReactNode } from 'react';
 
@@ -11,8 +11,8 @@ interface ILayoutBaseDePaginaProps {
 
 export const LayoutBasedePagina: React.FC<ILayoutBaseDePaginaProps> = ({children, titulo, barraDeFerramentas}) => {
   const theme = useTheme();
-  const smDown = useMediaQuery(theme.breakpoints.down('sm'));
-  const mdDown = useMediaQuery(theme.breakpoints.down('md'));
+  const smDown = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'));
+  const mdDown = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
 
   const {toggleDrawerOpen}= useDrawerContext();
   return(
