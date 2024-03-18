@@ -35,13 +35,13 @@ export const FerramentasDeDetalhe: React.FC<IFerramentasDeDetalheProps> = ({
   mostrarBotaoVoltarCarregando = false,
   mostrarBotaoApagarCarregando = false,
   mostrarBotaoSalvarCarregando = false,
-  mostrarBotaoSalvarEFecharCarregando = false,
+  mostrarBotaoSalvarEFecharCarregando: mostrarBotaoSalvarEFecharCarregando = false,
 
   aoClicarEmNovo,
   aoClicarEmVoltar,
   aoClicarEmApagar,
   aoClicarEmSalvar,
-  aoClicarEmSalvarEFechar,
+  aoClicarEmSalvarEFechar: aoClicarEmSalvarEFechar,
 }) => {
   const smDown = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'));
   const mdDown = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
@@ -81,9 +81,10 @@ export const FerramentasDeDetalhe: React.FC<IFerramentasDeDetalheProps> = ({
           disableElevation 
           variant='outlined'
           color='primary'
+          onClick={aoClicarEmSalvarEFechar}
           startIcon={<Icon>save</Icon>}>
           <Typography variant='button' whiteSpace='nowrap' textOverflow='ellipsis' overflow='hidden'>
-          Salvar e voltar
+          Salvar e fechar
           </Typography>  
         </Button>
       )}
