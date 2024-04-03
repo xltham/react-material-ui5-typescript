@@ -21,6 +21,11 @@ export const ListagemDePessoas: React.FC = () => {
   const busca = useMemo(() => {
     return searchParams.get('busca') || '';
   }, [searchParams]);
+ 
+  const pagina = useMemo(() => {
+    return searchParams.get('pagina') || '';
+  }, [searchParams]);
+
 
 
   useEffect(() => {
