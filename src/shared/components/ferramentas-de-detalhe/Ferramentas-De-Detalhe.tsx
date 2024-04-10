@@ -102,7 +102,11 @@ export const FerramentasDeDetalhe: React.FC<IFerramentasDeDetalheProps> = ({
           onClick={aoClicarEmApagar}
           startIcon={<Icon>delete</Icon>}
         >
-          <Typography variant='button' whiteSpace="nowrap" textOverflow="ellipsis" overflow="hidden">
+          <Typography 
+            variant='button' 
+            whiteSpace="nowrap"  
+            textOverflow="ellipsis" 
+            overflow="hidden">
             Apagar
           </Typography>
         </Button>

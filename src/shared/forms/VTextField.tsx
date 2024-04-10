@@ -1,14 +1,16 @@
+import { useEffect, useState } from 'react';
 import { TextField, TextFieldProps } from '@mui/material';
 import { useField } from '@unform/core';
-import { useEffect, useState } from 'react';
+
 
 type TVTextFieldProps = TextFieldProps & {
   name: string;
 }
-export const VTextField: React.FC<TVTextFieldProps> = ({name, ...rest}) => {
-  const { fieldName, registerField, defaultValue, error, clearError} = useField(name);
- 
-  const[value, setValue] = useState(defaultValue || '');
+export const VTextField: React.FC<TVTextFieldProps> = ({ name, ...rest }) => {
+  const { fieldName, registerField, defaultValue, error, clearError } = useField(name);
+
+  const [value, setValue] = useState(defaultValue || '');
+
 
   useEffect(() => {
     registerField({
@@ -17,8 +19,9 @@ export const VTextField: React.FC<TVTextFieldProps> = ({name, ...rest}) => {
       setValue: (_, newValue) => setValue(newValue),
     });
   }, [registerField, fieldName, value]);
- 
-  return(
+
+
+  return (
     <TextField
       {...rest}
 
@@ -27,10 +30,8 @@ export const VTextField: React.FC<TVTextFieldProps> = ({name, ...rest}) => {
       defaultValue={defaultValue}
 
       value={value}
-      onChange={e => setValue(e.target.value)}
-
-      onKeyDown={() => error ? clearError() : undefined}
-
+      onChange={e => { setValue(e.target.value); rest.onChange?.(e); }}
+      onKeyDown={(e) => { error && clearError(); rest.onKeyDown?.(e); }}
     />
   );
 };
