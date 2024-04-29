@@ -4,10 +4,10 @@ import { Box, ThemeProvider } from '@mui/material';
 
 interface IThemeContextData {
     themeName?: 'light' | 'dark';
-    toggleTheme?: () => void;
+    toggleTheme: () => void | boolean;
 }
 interface IAppThemeProviderProps {
-    children: React.ReactNode
+    children?: React.ReactNode
 }
 
 const ThemeContext = createContext({} as IThemeContextData);

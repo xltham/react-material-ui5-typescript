@@ -1,6 +1,12 @@
 {
   "pessoas": [
     {
+      "nomeCompleto": "Meci Careca",
+      "email": "mecicarecaoriginal@gmail.com",
+      "cidadeId": 2,
+      "id": 1
+    }, 
+    {
       "id": 3,
       "nomeCompleto": "Carlos Silva pinto",
       "email": "carlos@gmail.com",
@@ -72,5 +78,35 @@
       "email": "pipipi@gmail.com",
       "cidadeId": "1"
     }
-  ]
+   
+  ],
+  "cidades": [
+    {
+      "id": 1,
+      "nome": "São Paulo"
+    },
+    {
+      "nome": "Porto Velho",
+      "id": 2
+    },
+    {
+      "nome": "Vilhena",
+      "id": 3
+    },
+    {
+      "nome": "Rio de Janeiro",
+      "id": 4
+    },
+    {
+      "nome": "Pimenta Bueno",
+      "id": 5
+    },
+    {
+      "nome": "Roraima",
+      "id": 6
+    }
+  ],
+  "auth": {
+    "accessToken": "aaaaaaaaaaaaa.bbbbbbbbbbbbbbbbbbb.cccccccccccccccccc"
+  }
 }

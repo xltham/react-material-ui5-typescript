@@ -1,6 +1,6 @@
 
 import { Avatar, Box, Divider, Drawer, Icon, List, ListItemButton, ListItemIcon, ListItemText, useMediaQuery, useTheme } from '@mui/material';
-import { useAppThemeContext, useDrawerContext } from '../../contexts';
+import { useAppThemeContext, useAuthContext, useDrawerContext } from '../../contexts';
 import React from 'react';
 import { useMatch, useNavigate, useResolvedPath } from 'react-router-dom';
 
@@ -38,6 +38,7 @@ export const MenuLateral: React.FC<IMenuLateralProps> = ({children}) => {
   
   const{isDrawerOpen, toggleDrawerOpen, drawerOptions} = useDrawerContext();
   const{ toggleTheme } = useAppThemeContext();
+  const{ logout } = useAuthContext();
 
   return(
     <>
@@ -47,7 +48,7 @@ export const MenuLateral: React.FC<IMenuLateralProps> = ({children}) => {
           <Box width='100%' height={theme.spacing(20)} display='flex' alignItems='center' justifyContent='center'>
             
             <Avatar 
-              src='/static/images/avatar/1.jpg'
+              src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-GgqUIRJpoR32Yla37YMzZdbX215EGcrIG-QPVvxkLQ&s'
               sx={{height: theme.spacing(12), width: theme.spacing(12)}}
             />
           </Box>
@@ -76,8 +77,16 @@ export const MenuLateral: React.FC<IMenuLateralProps> = ({children}) => {
                 </ListItemIcon>
                 <ListItemText primary='Alternar Tema'/>
               </ListItemButton>
+             
+             
+              <ListItemButton onClick= {logout}>
+                <ListItemIcon>
+                  <Icon>logout</Icon>
+                </ListItemIcon>
+                <ListItemText primary='Sair'/>
+              </ListItemButton>
             </List>
-          </Box>
+          </Box>                                
         </Box>
             
       </Drawer>
