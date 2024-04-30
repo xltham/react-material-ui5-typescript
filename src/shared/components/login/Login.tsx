@@ -5,14 +5,15 @@ import { useState } from 'react';
 import * as yup from 'yup';
 
 const loginSchema = yup.object().shape({
-  email: yup.string().email().required(),
-  password: yup.string().required().min(5)
+  email: yup.string().email().required('O email é obrigatório').matches(/.*\.com$/),
+  password: yup.string().required().min(5, 'A senha deve ter pelo menos 5 caracteres')
 });
+
 interface ILoginProps{
   children?: React.ReactNode;
 }
 export const Login: React.FC<ILoginProps> = ({children}) => {
-  const { toggleTheme } = useAppThemeContext();
+  const { toggleTheme, themeName } = useAppThemeContext();
   const{ isAuthenticated, login } = useAuthContext();
   
   const [email, setEmail] = useState('');
@@ -23,7 +24,7 @@ export const Login: React.FC<ILoginProps> = ({children}) => {
 
 
   const handleSubmit = () => {
-    isLoading(true);
+    setIsLoading(true);
 
     loginSchema
       .validate({email, password}, {abortEarly: false})
@@ -35,7 +36,7 @@ export const Login: React.FC<ILoginProps> = ({children}) => {
           });
       })
       .catch((errors: yup.ValidationError) => {
-        isLoading(false);
+        setIsLoading(false);
 
         errors.inner.forEach(error => {
           if(error.path === 'email') {
@@ -60,10 +61,11 @@ export const Login: React.FC<ILoginProps> = ({children}) => {
       <Box display='flex' sx={{ position: 'absolute', left: 10, bottom: 10 }} flexDirection='column'>
         <Grid>toggleTheme</Grid>
         <Switch 
-
+          checked={themeName === 'dark'}
           onChange={toggleTheme}
           icon={<Icon>light_mode</Icon>} 
           checkedIcon={<Icon>dark_mode</Icon>} />
+          
 
       </Box>
 
@@ -74,13 +76,13 @@ export const Login: React.FC<ILoginProps> = ({children}) => {
             <Typography>Identifique-se</Typography>
 
             <TextField
-              type='Email'
+              type='email'
               label='Email'
               value={email}
               disabled={isLoading}
               error={!!emailError}
               helperText={emailError}
-              onKeyDown={() => setPasswordError('')}
+              onKeyDown={() => setEmailError('')}
               onChange={e => setEmail(e.target.value)}
             />
             

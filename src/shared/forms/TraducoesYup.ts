@@ -10,6 +10,7 @@ setLocale({
     max: ({ max }) => `O campo pode ter no máximo ${max} caracteres`,
     min: ({ min }) => `O campo precisa ter pelo menos ${min} caracteres`,
     length: ({ length }) => `O campo precisa ter exatamente ${length} caracteres`,
+    matches: ({ path }) => `O campo precisa ter um ${path} válido`
   },
   date: {
     max: ({ max }) => `A data deve ser menor que ${max}`,
